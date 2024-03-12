@@ -17,26 +17,18 @@ public class LibrarySystem {
         users = new HashMap<>();
         lendings = new ArrayList<>();
     }
-
-    public void addBookWithTitleAndNameOfSingleAuthor(String title, String authorName) {
-        try {
-            Author author = new Author(authorName);
-            List<Author> authors = new ArrayList<>();
-            authors.add(author);
-            Book book = new Book(title, authors);
-            books.add(book);
-        } catch (EmptyAuthorListException e) {
-            e.printStackTrace();
-        }
+    
+    public void addBookWithTitleAndNameOfSingleAuthor(String title, String authorName) throws EmptyAuthorListException {
+        Author author = new Author(authorName);
+        List<Author> authors = new ArrayList<>();
+        authors.add(author);
+        Book book = new Book(title, authors);
+        books.add(book);
     }
 
-    public void addBookWithTitleAndAuthorList(String title, List<Author> authors) {
-        try {
-            Book book = new Book(title, authors);
-            books.add(book);
-        } catch (EmptyAuthorListException e) {
-            e.printStackTrace();
-        }
+    public void addBookWithTitleAndAuthorList(String title, List<Author> authors) throws EmptyAuthorListException {
+        Book book = new Book(title, authors);
+        books.add(book);
     }
 
     public void addStudentUser(String name, boolean feePaid) {
@@ -80,7 +72,21 @@ public class LibrarySystem {
         }
     }
 
-    public void returnBook(User user, Book book) {
-        lendings.removeIf(lending -> lending.getBook().equals(book) && lending.getUser().equals(user));
+    public void returnBook(User user, Book book) throws Exception {
+        boolean found = false;
+        for (Lending lending : lendings) {
+            if (lending.getBook().equals(book)) {
+                if (lending.getUser().equals(user)) {
+                    lendings.remove(lending);
+                    found = true;
+                    break;
+                } else {
+                    throw new Exception("Book was borrowed by a different user.");
+                }
+            }
+        }
+        if (!found) {
+            throw new Exception("Book was not borrowed.");
+        }
     }
 }
