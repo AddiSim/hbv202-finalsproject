@@ -71,24 +71,7 @@ public class LibrarySystem {
         }
     }
 
-    public void returnBook(User user, Book book) throws BookNotBorrowedException, BookBorrowedByAnotherUserException {
-        Lending lendingToRemove = null;
-
-        for (Lending lending : lendings) {
-            if (lending.getBook().equals(book)) {
-                if (lending.getUser().equals(user)) {
-                    lendingToRemove = lending;
-                    break;
-                } else {
-                    throw new BookBorrowedByAnotherUserException("This book was borrowed by a different user.");
-                }
-            }
-        }
-
-        if (lendingToRemove != null) {
-            lendings.remove(lendingToRemove);
-        } else {
-            throw new BookNotBorrowedException("This book was not borrowed by this user.");
-        }
+    public void returnBook(User user, Book book) {
+        lendings.removeIf(lending -> lending.getBook().equals(book) && lending.getUser().equals(user));
     }
 }
