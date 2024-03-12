@@ -26,6 +26,9 @@ public class Book {
     }
 
     public void setAuthors(List<Author> authors) throws EmptyAuthorListException {
+        if (authors == null || authors.isEmpty()) {
+            throw new EmptyAuthorListException("A book must have at least one author.");
+        }
         this.authors = authors;
     }
 

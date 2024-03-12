@@ -17,24 +17,16 @@ public class LibrarySystem {
     }
 
     public void addBookWithTitleAndNameOfSingleAuthor(String title, String authorName) throws EmptyAuthorListException {
-        try {
-            Author author = new Author(authorName);
-            List<Author> authors = new ArrayList<>();
-            authors.add(author);
-            Book book = new Book(title, authors);
-            books.add(book);
-        } catch (EmptyAuthorListException e) {
-            e.printStackTrace();
-        }
+        Author author = new Author(authorName);
+        List<Author> authors = new ArrayList<>();
+        authors.add(author);
+        Book book = new Book(title, authors);
+        books.add(book);
     }
 
     public void addBookWithTitleAndAuthorList(String title, List<Author> authors) throws EmptyAuthorListException {
-        try {
-            Book book = new Book(title, authors);
-            books.add(book);
-        } catch (EmptyAuthorListException e) {
-            e.printStackTrace();
-        }
+        Book book = new Book(title, authors);
+        books.add(book);
     }
 
     public void addStudentUser(String name, boolean feePaid) {
@@ -79,7 +71,24 @@ public class LibrarySystem {
         }
     }
 
-    public void returnBook(User user, Book book) {
-        lendings.removeIf(lending -> lending.getBook().equals(book) && lending.getUser().equals(user));
+    public void returnBook(User user, Book book) throws BookNotBorrowedException, BookBorrowedByAnotherUserException {
+        Lending lendingToRemove = null;
+
+        for (Lending lending : lendings) {
+            if (lending.getBook().equals(book)) {
+                if (lending.getUser().equals(user)) {
+                    lendingToRemove = lending;
+                    break;
+                } else {
+                    throw new BookBorrowedByAnotherUserException("This book was borrowed by a different user.");
+                }
+            }
+        }
+
+        if (lendingToRemove != null) {
+            lendings.remove(lendingToRemove);
+        } else {
+            throw new BookNotBorrowedException("This book was not borrowed by this user.");
+        }
     }
 }
