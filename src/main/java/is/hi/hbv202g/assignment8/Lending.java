@@ -13,17 +13,11 @@ public class Lending {
         this.dueDate = LocalDate.now().plusDays(30);
     }
 
-    public Lending(Book book, User user, LocalDate dueDate) {
-        this.book = book;
-        this.user = user;
-        this.dueDate = dueDate;
-    }
-
     public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(java.time.LocalDate dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 

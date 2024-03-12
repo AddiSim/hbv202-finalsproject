@@ -7,6 +7,12 @@ public class Book {
     private String title;
     private List<Author> authors;
 
+    public Book(String title, String authorName) {
+        this.title = title;
+        this.authors = new ArrayList<>();
+        this.authors.add(new Author(authorName));
+    }
+
     public Book(String title, List<Author> authors) throws EmptyAuthorListException {
         if (authors == null || authors.isEmpty()) {
             throw new EmptyAuthorListException("A book must have at least one author.");

@@ -66,8 +66,8 @@ public class LibrarySystem {
         return user;
     }
 
-    public void borrowBook(User user, Book book, LocalDate dueDate) {
-        Lending lending = new Lending(book, user, dueDate);
+    public void borrowBook(User user, Book book) {
+        Lending lending = new Lending(book, user);
         lendings.add(lending);
     }
 
