@@ -21,6 +21,12 @@ public class Book {
         this.authors = authors;
     }
 
+    @Override
+    public String toString() {
+        String authorName = authors != null && !authors.isEmpty() ? authors.get(0).getName() : "No Author";
+        return title + " by " + authorName;
+    }
+
     public List<Author> getAuthors() {
         return authors;
     }

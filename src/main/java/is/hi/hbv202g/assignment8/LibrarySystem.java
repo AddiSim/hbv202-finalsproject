@@ -48,6 +48,10 @@ public class LibrarySystem {
         throw new UserOrBookDoesNotExistException("Book with title '" + title + "' does not exist.");
     }
 
+    public List<Book> getBooks() {
+        return new ArrayList<>(books);
+    }
+
     public User findUserByName(String name) throws UserOrBookDoesNotExistException {
         for (User user : users) {
             if (user.getName().equals(name)) {
