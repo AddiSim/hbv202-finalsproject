@@ -8,6 +8,11 @@ public class Student extends User {
         this.feePaid = feePaid;
     }
 
+    @Override
+    public String toString() {
+        return "Student: " + name;
+    }
+
     public boolean isFeePaid() {
         return feePaid;
     }

@@ -34,6 +34,10 @@ public class LibrarySystem {
         users.add(student);
     }
 
+    public List<User> getUsers() {
+        return new ArrayList<>(users);
+    }
+
     public void addFacultyMemberUser(String name, String department) {
         User facultyMember = new FacultyMember(name, department);
         users.add(facultyMember);
@@ -52,6 +56,10 @@ public class LibrarySystem {
         return new ArrayList<>(books);
     }
 
+    public List<Lending> getLendings() {
+        return new ArrayList<>(lendings);
+    }
+
     public User findUserByName(String name) throws UserOrBookDoesNotExistException {
         for (User user : users) {
             if (user.getName().equals(name)) {
@@ -63,6 +71,7 @@ public class LibrarySystem {
 
     public void borrowBook(User user, Book book) {
         Lending lending = new Lending(book, user);
+        books.remove(book);
         lendings.add(lending);
     }
 
@@ -76,6 +85,16 @@ public class LibrarySystem {
     }
 
     public void returnBook(User user, Book book) {
-        lendings.removeIf(lending -> lending.getBook().equals(book) && lending.getUser().equals(user));
+        Lending lendingToRemove = null;
+        for (Lending lending : lendings) {
+            if (lending.getBook().equals(book) && lending.getUser().equals(user)) {
+                lendingToRemove = lending;
+                break;
+            }
+        }
+        if (lendingToRemove != null) {
+            lendings.remove(lendingToRemove);
+            books.add(book);
+        }
     }
 }

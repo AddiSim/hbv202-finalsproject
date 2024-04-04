@@ -8,6 +8,11 @@ public class FacultyMember extends User {
         this.department = department;
     }
 
+    @Override
+    public String toString() {
+        return "Faculty: " + name + " (" + department + ")";
+    }
+
     public String getDepartment() {
         return department;
     }
