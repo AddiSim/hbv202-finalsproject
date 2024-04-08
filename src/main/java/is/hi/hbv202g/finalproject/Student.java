@@ -1,4 +1,4 @@
-package is.hi.hbv202g.assignment8;
+package is.hi.hbv202g.finalproject;
 
 public class Student extends User {
     private boolean feePaid;
@@ -10,7 +10,7 @@ public class Student extends User {
 
     @Override
     public String toString() {
-        return "Student: " + name;
+        return name;
     }
 
     public boolean isFeePaid() {

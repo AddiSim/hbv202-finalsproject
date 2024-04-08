@@ -1,13 +1,25 @@
-# HBV202GAssignment8
-A Maven project skeleton. The provided Maven POM sets the Java version to 17.
+# Library System
 
-All classes need to be located in Java package `is.hi.hbv202g.assignment8`.
+Simple Library System that lets you log in as faculty or student, and lets you add books as faculty and lend books as a student.
 
-Class and method names of the submitted solution need to be **exactly** the same 
-as in the UML class diagram in the assignment PDF. 
+##Running the program
 
-If you like, you can import from project directory `UML` the file 
-`library_system.uxf` into the online UML editor https://www.umletino.com/ 
-and copy/paste from there class and method names: click on a class and then, 
-you can copy from the `properties` window on the right hand side class 
-and method names.
+Attached you have bat file called run that you can execute to run the program.
+
+## Design Diagram
+
+![Library System Design Diagram](images/diagram.png)
+
+## Built With
+
+* [Maven](https://maven.apache.org/) - Dependency Management
+
+## Authors
+
+Arnar Eyðunsson Simonsen
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+

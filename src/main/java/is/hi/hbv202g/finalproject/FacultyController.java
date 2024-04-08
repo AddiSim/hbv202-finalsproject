@@ -1,4 +1,4 @@
-package is.hi.hbv202g.assignment8;
+package is.hi.hbv202g.finalproject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,13 +8,17 @@ import javafx.scene.control.TextField;
 
 public class FacultyController {
     @FXML
-    private TextField titleField, authorField;
+    public
+    TextField titleField;
+    @FXML
+    public
+    TextField authorField;
     @FXML
     private Button addButton;
 
     private LibrarySystem librarySystem;
     private FacultyMember facultyMember;
-    private Main main;
+    private App main;
 
     public void setLibrarySystem(LibrarySystem librarySystem) {
         this.librarySystem = librarySystem;
@@ -29,7 +33,7 @@ public class FacultyController {
     }
 
     @FXML
-    private void handleAddBookAction(ActionEvent event) {
+    public void handleAddBookAction(ActionEvent event) {
         try {
             String title = titleField.getText();
             String authorName = authorField.getText();
@@ -53,7 +57,7 @@ public class FacultyController {
         alert.showAndWait();
     }
 
-    public void setMainApp(Main main) {
+    public void setMainApp(App main) {
         this.main = main;
     }
 

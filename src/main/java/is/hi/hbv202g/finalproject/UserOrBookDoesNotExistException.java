@@ -1,4 +1,4 @@
-package is.hi.hbv202g.assignment8;
+package is.hi.hbv202g.finalproject;
 
 public class UserOrBookDoesNotExistException extends Exception {
     public UserOrBookDoesNotExistException(String message) {

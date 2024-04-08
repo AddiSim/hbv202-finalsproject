@@ -1,4 +1,4 @@
-package is.hi.hbv202g.assignment8;
+package is.hi.hbv202g.finalproject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,12 +8,13 @@ import javafx.scene.control.ListView;
 public class StudentController {
 
     @FXML
-    private ListView<Book> booksListView;
+    public
+    ListView<Book> booksListView;
     @FXML
     private ListView<Lending> borrowedBooksListView;
     private LibrarySystem librarySystem;
     private Student loggedInStudent;
-    private Main main;
+    private App main;
 
     public void setLibrarySystem(LibrarySystem librarySystem) {
         this.librarySystem = librarySystem;
@@ -29,7 +30,7 @@ public class StudentController {
     }
 
     @FXML
-    private void handleBorrowBookAction(ActionEvent event) {
+    public void handleBorrowBookAction(ActionEvent event) {
         Book selectedBook = booksListView.getSelectionModel().getSelectedItem();
         if (selectedBook == null) {
             showAlert("Selection Error", "You must select a book to borrow.");
@@ -65,7 +66,7 @@ public class StudentController {
         }
     }
 
-    public void setMainApp(Main main) {
+    public void setMainApp(App main) {
         this.main = main;
     }
 

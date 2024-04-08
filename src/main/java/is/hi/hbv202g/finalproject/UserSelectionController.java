@@ -1,4 +1,4 @@
-package is.hi.hbv202g.assignment8;
+package is.hi.hbv202g.finalproject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,13 +19,13 @@ public class UserSelectionController {
     private Button loginButton;
 
     private LibrarySystem librarySystem;
-    private Main main;
+    private App main;
 
     public void setLibrarySystem(LibrarySystem librarySystem) {
         this.librarySystem = librarySystem;
     }
 
-    public void setMainApp(Main main) {
+    public void setMainApp(App main) {
         this.main = main;
     }
 

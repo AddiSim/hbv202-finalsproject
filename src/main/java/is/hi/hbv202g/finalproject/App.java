@@ -1,4 +1,4 @@
-package is.hi.hbv202g.assignment8;
+package is.hi.hbv202g.finalproject;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Main extends Application {
+public class App extends Application {
 
     private LibrarySystem librarySystem = new LibrarySystem();
     private Stage primaryStage;
@@ -20,7 +20,7 @@ public class Main extends Application {
 
     public void showUserSelectionScreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/assignment8/UserSelectionScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/finalproject/UserSelectionScreen.fxml"));
             Scene scene = new Scene(loader.load());
             UserSelectionController controller = loader.getController();
             controller.setLibrarySystem(librarySystem);
@@ -35,7 +35,7 @@ public class Main extends Application {
 
     public void showUserScreen(User user) {
         try {
-            String fxmlFile = user instanceof Student ? "/assignment8/StudentScreen.fxml" : "/assignment8/FacultyScreen.fxml";
+            String fxmlFile = user instanceof Student ? "/finalproject/StudentScreen.fxml" : "/finalproject/FacultyScreen.fxml";
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Scene scene = new Scene(loader.load());
             primaryStage.setScene(scene);
@@ -61,7 +61,7 @@ public class Main extends Application {
 
     public void showStudentScreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/assignment8/StudentScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/finalproject/StudentScreen.fxml"));
             Scene scene = new Scene(loader.load());
             StudentController controller = loader.getController();
             controller.setMainApp(this);
@@ -73,7 +73,7 @@ public class Main extends Application {
 
     public void showFacultyScreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/assignment8/FacultyScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/finalproject/FacultyScreen.fxml"));
             Scene scene = new Scene(loader.load());
             StudentController controller = loader.getController();
             controller.setMainApp(this);
