@@ -1,0 +1,8 @@
+<project>
+    <body>
+        <menu name="Project Documentation">
+            <item name="Introduction" href="index.html"/>
+            <item name="Javadoc" href="apidocs/index.html"/>
+        </menu>
+    </body>
+</project>
